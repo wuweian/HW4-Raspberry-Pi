@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Raspberry Pi RPS Detector</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #1c1c1c; color: white; }
+    img { border: 2px solid white; max-width: 90%; }
+    h2 { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Raspberry Pi 剪刀石頭布辨識</h1>
+  <p>請讓手掌面向鏡頭，系統會自動判斷目前手勢。</p>
+  <img id="camera-frame" src="" alt="camera stream">
+  <h2 id="result">結果：等待中...</h2>
+
+  <script>
+    const evtSource = new EventSource("/get_camera_stream");
+    evtSource.onmessage = function (event) {
+      const data = JSON.parse(event.data);
+      if (data.image) {
+        document.getElementById("camera-frame").src = "data:image/jpeg;base64," + data.image;
+      }
+      if (data.result) {
+        document.getElementById("result").innerText = "結果：" + data.result;
+      }
+    };
+  </script>
+</body>
+</html>
