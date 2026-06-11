@@ -34,8 +34,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
 CLASSES = ["rock", "scissors", "paper", "error"]
-CAPTURE_INTERVAL = 1.0  # seconds between samples (faster than Lab7's 5s, since
-                         # gestures are static and we want more samples)
+CAPTURE_INTERVAL = 0.5  # seconds between samples
 
 
 def normalize_landmarks(hand_landmarks):

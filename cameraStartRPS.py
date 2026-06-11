@@ -42,15 +42,15 @@ POST_URL = "http://127.0.0.1:5000/post_camera_frame"
 # --------------------------------------------------------------------------
 
 LABEL_DISPLAY = {
-    "rock": "石頭",
-    "scissors": "剪刀",
-    "paper": "布",
+    "rock": "Rock",
+    "scissors": "Scissors",
+    "paper": "Paper",
     "error": "Error",
 }
 
 # Confidence threshold below which we report "Error" regardless of the
 # model's predicted class (handles gestures the model has never seen).
-CONF_THRESHOLD = 0.6
+CONF_THRESHOLD = 0.5
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
